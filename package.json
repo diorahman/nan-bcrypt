@@ -1,6 +1,6 @@
 {
-  "name": "bcrypt",
-  "description": "A bcrypt library for NodeJS.",
+  "name": "nan-bcrypt",
+  "description": "NAN-ed A bcrypt library for NodeJS.",
   "keywords": [
     "bcrypt",
     "password",
