@@ -36,6 +36,7 @@
 #include <cstring>
 #include <vector>
 
+#include <stdlib.h>
 #include <nan.h>
 
 #include "node_blf.h"
