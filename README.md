@@ -1,32 +1,13 @@
-# node.bcrypt.js
+# nan-bcrypt
 
-[![Build Status](https://secure.travis-ci.org/ncb000gt/node.bcrypt.js.png)](http://travis-ci.org/#!/ncb000gt/node.bcrypt.js) 
+A nan-ification of [node.bcrypt.js](https://github.com/ncb000gt/node.bcrypt.js) to make it compiles nicely on the latest (0.11.13) version of node. It uses [nan](https://github.com/rvagg/nan) from [rvagg](https://github.com/rvagg).
 
-Lib to help you hash passwords.
+While [node.bcrypt.js](https://github.com/ncb000gt/node.bcrypt.js) is a lib to help you hash passwords.
 [bcrypt on wikipedia][bcryptwiki]
 
-Catalyst for this module: [How To Safely Store A Password][codahale]
+Catalyst for [node.bcrypt.js](https://github.com/ncb000gt/node.bcrypt.js) module: [How To Safely Store A Password][codahale]
 
-## If You Are Submitting Bugs/Issues
-
-First, make sure that the version of node you are using is a _stable_ version. You'll know this because it'll have an even major release number. We do not currently support unstable versions and while the module may happen to work on some unstable versions you'll find that we quickly close issues if you're not using a stable version.
-
-If you are on a stable version of node, we can't magically know what you are doing to expose an issue, it is best if you provide a snippet of code or log files if you're having an install issue. This snippet need not include your secret sauce, but it must replicate the issue you are describing. The issues that get closed without resolution tend to be the ones that don't help us help you. Thanks.
-
-
-## Version Compatibility
-
-| Node Version | Bcrypt Version |
-| ---- | ---- |
-| <= 0.4.x | <= 0.4.x |
-| >= 0.6.x | >= 0.5.x |
-
-Windows users should make sure to have at least node 0.8.5 installed and version >= 0.7.1 of this module.  
-`node-gyp` only works with stable/released versions of node. Since the `bcrypt` module uses `node-gyp` to build and install you'll need a stable version of node to use bcrypt. If you do not you'll likely see an error that starts with:
-
-    gyp ERR! stack Error: "pre" versions of node cannot be installed, use the --nodedir flag instead
-
-
+If you want to use [node.bcrypt.js](https://github.com/ncb000gt/node.bcrypt.js) on stable releases of node please take a look at the original [node.bcrypt.js](https://github.com/ncb000gt/node.bcrypt.js) version.
 
 ## Security Issues/Concerns
 
@@ -38,16 +19,17 @@ To make it easier for people using this tool to analyze what has been surveyed, 
 
 ## Dependencies
 
-* NodeJS
+* nodejs ([0.11.13](http://blog.nodejs.org/2014/05/02/node-v0-11-13-unstable/))
 * `node-gyp`
  * Please check the dependencies for this tool at: https://github.com/TooTallNate/node-gyp/
   * Windows users will need the options for c# and c++ installed with their visual studio instance.
   * Python 2.x
 * `OpenSSL` - This is only required to build the `bcrypt` project if you are using versions <= 0.7.7. Otherwise, we're using the builtin node crypto bindings for seed data (which use the same OpenSSL code paths we were, but don't have the external dependency).
+* `nan` - This is the magic layer to make `node.bcrypt.js` compiles on unstable node version (0.11.13)
 
-## Install via NPM
+## Install via npm
 ```
-npm install bcrypt
+npm install nan-bcrypt
 ```
 
 ***Note:*** OS X users using Xcode 4.3.1 or above may need to run the following command in their terminal prior to installing if errors occur regarding xcodebuild: ```sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer```
@@ -165,10 +147,12 @@ The code for this comes from a few sources:
 * blowfish.cc - OpenBSD
 * bcrypt.cc - OpenBSD
 * bcrypt::gen_salt - [gen_salt inclusion to bcrypt][bcryptgs]
-* bcrypt_node.cc - me
+* bcrypt_node.cc - [Nick Campbell][ncb000gt] - Original author of `node.bcrypt.js`
+* nan-ification of bcrypt_node.cc - [diorahman](https://github.com/diorahman)
 
-## Contributors
+## Contributors via the original `node.bcrypt.js`
 
+* [Nick Campbell][ncb000gt] - The original author of `node.bcrypt.js`
 * [Antonio Salazar Cardozo][shadowfiend] - Early MacOS X support (when we used libbsd)
 * [Ben Glow][pixelglow] - Fixes for thread safety with async calls
 * [Van Nguyen][thegoleffect] - Found a timing attack in the comparator
@@ -193,6 +177,7 @@ Unless stated elsewhere, file headers or otherwise, the license as stated in the
 [gh13]: https://github.com/ncb000gt/node.bcrypt.js/issues/13
 [jtr]: http://www.openwall.com/lists/oss-security/2011/06/20/2
 
+[ncb000gt]:https://github.com/ncb000gt
 [shadowfiend]:https://github.com/Shadowfiend
 [thegoleffect]:https://github.com/thegoleffect
 [pixelglow]:https://github.com/pixelglow

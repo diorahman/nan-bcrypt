@@ -165,7 +165,7 @@ NAN_METHOD(GenerateSalt) {
     NanScope();
 
     if (args.Length() < 3) {
-        return ThrowException(Exception::TypeError(NanNew<String>("3 arguments expected")));
+        return NanThrowError(Exception::TypeError(NanNew<String>("3 arguments expected")));
     }
 
     if (!Buffer::HasInstance(args[1]) || Buffer::Length(args[1].As<Object>()) != 16) {
@@ -253,7 +253,7 @@ NAN_METHOD(Encrypt) {
     NanScope();
 
     if (args.Length() < 3) {
-        return ThrowException(Exception::TypeError(NanNew<String>("3 arguments expected")));
+        return NanThrowError(Exception::TypeError(NanNew<String>("3 arguments expected")));
     }
 
     String::Utf8Value data(args[0]->ToString());
@@ -276,7 +276,7 @@ NAN_METHOD(EncryptSync) {
     NanScope();
 
     if (args.Length() < 2) {
-        return ThrowException(Exception::TypeError(NanNew<String>("2 arguments expected")));
+        return NanThrowError(Exception::TypeError(NanNew<String>("2 arguments expected")));
     }
 
     String::Utf8Value data(args[0]->ToString());
@@ -338,7 +338,7 @@ void CompareAsyncAfter(uv_work_t* req) {
         argv[1] = NanUndefined();
     } else {
         argv[0] = NanUndefined();
-        argv[1] = Boolean::New(baton->result);
+        argv[1] = NanNew<Boolean>(baton->result);
     }
 
     TryCatch try_catch; // don't quite see the necessity of this
@@ -357,7 +357,7 @@ NAN_METHOD(Compare) {
     NanScope();
 
     if (args.Length() < 3) {
-        return ThrowException(Exception::TypeError(NanNew<String>("3 arguments expected")));
+        return NanThrowError(Exception::TypeError(NanNew<String>("3 arguments expected")));
     }
 
     String::Utf8Value input(args[0]->ToString());
@@ -380,7 +380,7 @@ NAN_METHOD(CompareSync) {
     NanScope();
 
     if (args.Length() < 2) {
-        return ThrowException(Exception::TypeError(NanNew<String>("2 arguments expected")));
+        return NanThrowError(Exception::TypeError(NanNew<String>("2 arguments expected")));
     }
 
     String::Utf8Value pw(args[0]->ToString());
@@ -389,9 +389,9 @@ NAN_METHOD(CompareSync) {
     char bcrypted[_PASSWORD_LEN];
     if (ValidateSalt(*hash)) {
         bcrypt(*pw, *hash, bcrypted);
-        NanReturnValue(Boolean::New(CompareStrings(bcrypted, *hash)));
+        NanReturnValue(NanNew<Boolean>(CompareStrings(bcrypted, *hash)));
     } else {
-        NanReturnValue(Boolean::New(false));
+        NanReturnValue(NanNew<Boolean>(false));
     }
 }
 
@@ -399,7 +399,7 @@ NAN_METHOD(GetRounds) {
     NanScope();
 
     if (args.Length() < 1) {
-        return ThrowException(Exception::TypeError(NanNew<String>("1 argument expected")));
+        return NanThrowError(Exception::TypeError(NanNew<String>("1 argument expected")));
     }
 
     String::Utf8Value hash(args[0]->ToString());
@@ -408,7 +408,7 @@ NAN_METHOD(GetRounds) {
         NanThrowError(Exception::Error(NanNew<String>("invalid hash provided")));
     }
 
-    NanReturnValue(Integer::New(rounds));
+    NanReturnValue(NanNew<Integer>(rounds));
 }
 
 } // anonymous namespace

@@ -1,6 +1,6 @@
 {
-  "name": "bcrypt",
-  "description": "A bcrypt library for NodeJS.",
+  "name": "nan-bcrypt",
+  "description": "A nan-ification of node.bcrypt.js by ncb000gt to make it compiles on latest unstable node",
   "keywords": [
     "bcrypt",
     "password",
@@ -8,17 +8,18 @@
     "authentication",
     "encryption",
     "crypt",
-    "crypto"
+    "crypto",
+    "nan"
   ],
   "main": "./bcrypt",
   "version": "0.7.8",
-  "author": "Nick Campbell (https://github.com/ncb000gt)",
+  "author": "Dhi Aurrahman <diorahman@rockybars.com>",
   "engines": {
-    "node": ">= 0.6.0"
+    "node": ">= 0.11.13"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ncb000gt/node.bcrypt.js.git"
+    "url": "https://github.com/diorahman/nan-bcrypt.git"
   },
   "licenses": [
     {
@@ -26,19 +27,20 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/ncb000gt/node.bcrypt.js/issues"
+    "url": "https://github.com/diorahman/nan-bcrypt/issues"
   },
   "scripts": {
     "test": "node-gyp configure build && nodeunit test"
   },
   "dependencies": {
-    "bindings": "1.0.0",
-    "nan": "~0.8.0"
+    "bindings": "^1.2.0",
+    "nan": "^1.1.2"
   },
   "devDependencies": {
     "nodeunit": ">=0.6.4"
   },
   "contributors": [
+    "Nick 'The Original Author' Campbell <> (https://github.com/ncb000gt)",
     "Antonio Salazar Cardozo <savedfastcool@gmail.com> (https://github.com/Shadowfiend)",
     "Van Nguyen <the.gol.effect@gmail.com> (https://github.com/thegoleffect)",
     "David Trejo <david@dtrejo.com> (https://github.com/dtrejo)",
