@@ -1,5 +1,8 @@
 # nan-bcrypt
 
+[![Build Status](https://secure.travis-ci.org/diorahman/nan-bcrypt.png)](http://travis-ci.org/#!/diorahman/nan-bcrypt) 
+
+
 A nan-ification of [node.bcrypt.js](https://github.com/ncb000gt/node.bcrypt.js) to make it compiles nicely on the latest (0.11.13) version of node. It uses [nan](https://github.com/rvagg/nan) from [rvagg](https://github.com/rvagg).
 
 While [node.bcrypt.js](https://github.com/ncb000gt/node.bcrypt.js) is a lib to help you hash passwords.
