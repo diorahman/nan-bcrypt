@@ -18,5 +18,4 @@ test: build
 clean:
 	node-gyp clean
 
-
 .PHONY: clean test build
